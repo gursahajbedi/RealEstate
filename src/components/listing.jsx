@@ -63,7 +63,7 @@ export default function Listing(prop){
                 </div>
               </div>
             </div>
-            <NavLink to={value.user?'/property':'/login'} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
+            <NavLink to={value.user?'/re/property':'/re/login'} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
         </div>
     )
 }
