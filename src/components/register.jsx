@@ -35,7 +35,7 @@ export default function Register(){
                         <input type="password" className="form-control fs-3 mb-4" onChange={(e)=>{setpassword(e.target.value)}}/>
                         <br/>
                         <button className="mb-4 btn btn-success" onClick={onRegister}><h1 className='h3 fw-normal'>Register</h1></button>
-                        <h3>Already Registered Continue to <Link href="/login">Login</Link></h3>
+                        <h3>Already Registered Continue to <Link to="/login">Login</Link></h3>
                     </div>
                 </form>
             </div>

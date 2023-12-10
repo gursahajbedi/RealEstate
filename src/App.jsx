@@ -29,19 +29,19 @@ function App() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="ms-3 navbar-nav  me-auto my-2 my-lg-0 gap-4">
             <li className="nav-item border-bottom border-4">
-              <Link className="nav-link active mt-3" aria-current="page" href="/"><h3>Listing</h3></Link>
+              <Link className="nav-link active mt-3" aria-current="page" to="/"><h3>Listing</h3></Link>
             </li>
             {value.user && (<li className="nav-item border-bottom border-4">
-              <Link className="nav-link active mt-3" href="/contact"><h3>Contact</h3></Link>
+              <Link className="nav-link active mt-3" to="/contact"><h3>Contact</h3></Link>
             </li>)}
             {value.user && (<li className="nav-item border-bottom border-4">
-              <Link className="nav-link active mt-3" href="/enroll"><h3>Enroll</h3></Link>
+              <Link className="nav-link active mt-3" to="/enroll"><h3>Enroll</h3></Link>
             </li>)}
             {!value.user && (<li className="nav-item border-bottom border-4">
-              <Link className="nav-link active mt-3" href="/login"><h3>Login</h3></Link>
+              <Link className="nav-link active mt-3" to="/login"><h3>Login</h3></Link>
             </li>)}
             {!value.user && (<li className="nav-item border-bottom border-4">
-              <Link className="nav-link active mt-3" href="/register"><h3>Register</h3></Link>
+              <Link className="nav-link active mt-3" to="/register"><h3>Register</h3></Link>
             </li>)}
           </ul>
           {value.user && (<form className="d-flex" role="search">
