@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react"
 import useLogin from "../hooks/useLogin"
+import { Link } from "react-router-dom"
 
 
 export default function Login(){
@@ -30,7 +31,7 @@ export default function Login(){
                         <br/>
                         <button className="mb-4 btn btn-success" type="submit"><h1 className='h3 fw-normal'>Login</h1></button>
                     </div>
-                    <h3>Dont have an account? Continue to <a href="/register">Register</a></h3>
+                    <h3>Dont have an account? Continue to <Link to="/register">Register</Link></h3>
                 </form>
             </div>
         </div>):(

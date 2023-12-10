@@ -1,6 +1,6 @@
 import Login from "./components/login"
 import Register from "./components/register"
-import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Navigate, Link} from "react-router-dom"
 import useAuthContext from "./context/useAuthContext"
 import Home from "./components/home"
 import useLogout from "./hooks/useLogout"
@@ -22,26 +22,26 @@ function App() {
       
     <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/"><h1 className="display-3 fw-bold border-bottom border-4 pb-2 pt-2">RealEstate</h1></a>
+        <Link className="navbar-brand" to="/"><h1 className="display-3 fw-bold border-bottom border-4 pb-2 pt-2">RealEstate</h1></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="ms-3 navbar-nav  me-auto my-2 my-lg-0 gap-4">
             <li className="nav-item border-bottom border-4">
-              <a className="nav-link active mt-3" aria-current="page" href="/"><h3>Listing</h3></a>
+              <Link className="nav-link active mt-3" aria-current="page" href="/"><h3>Listing</h3></Link>
             </li>
             {value.user && (<li className="nav-item border-bottom border-4">
-              <a className="nav-link active mt-3" href="/contact"><h3>Contact</h3></a>
+              <Link className="nav-link active mt-3" href="/contact"><h3>Contact</h3></Link>
             </li>)}
             {value.user && (<li className="nav-item border-bottom border-4">
-              <a className="nav-link active mt-3" href="/enroll"><h3>Enroll</h3></a>
+              <Link className="nav-link active mt-3" href="/enroll"><h3>Enroll</h3></Link>
             </li>)}
             {!value.user && (<li className="nav-item border-bottom border-4">
-              <a className="nav-link active mt-3" href="/login"><h3>Login</h3></a>
+              <Link className="nav-link active mt-3" href="/login"><h3>Login</h3></Link>
             </li>)}
             {!value.user && (<li className="nav-item border-bottom border-4">
-              <a className="nav-link active mt-3" href="/register"><h3>Register</h3></a>
+              <Link className="nav-link active mt-3" href="/register"><h3>Register</h3></Link>
             </li>)}
           </ul>
           {value.user && (<form className="d-flex" role="search">
