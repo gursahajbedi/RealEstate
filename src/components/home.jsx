@@ -44,7 +44,7 @@ export default function Home(){
     // axios.defaults.headers.common['Authorization']=`Bearer ${(value.user.access)}`
 
     const getpropertylisting=async()=>{
-        await axios.get(`https://realest-estate-the-website.onrender.com/api/listings/?page=${page}`).then((res)=>{
+        await axios.get(`https://localhost:8000/api/listings/?page=${page}`).then((res)=>{
         setnextpage(res.data.next)
         setprevpage(res.data.previous)
         setelementcount(res.data.count)
