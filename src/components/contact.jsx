@@ -10,7 +10,7 @@ export default function Contact(){
 
     const submitContact =async(e)=>{
         e.preventDefault()
-        axios.post('https://realest-estate-the-website.onrender.com/api/contact/',{name,email,subject,message}).then((res)=>{
+        axios.post('https://localhost:8000/api/contact/',{name,email,subject,message}).then((res)=>{
             console.log("Message Sent")
             setconfirm(true)
         }).catch((err)=>{
