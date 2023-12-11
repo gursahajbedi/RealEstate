@@ -9,7 +9,7 @@ export default function Realtor(prop){
     
 
     const realtorinfo = async()=>{
-        await axios.get(`https://realest-estate-the-website.onrender.com/api/realtors/${prop.realtor}`).then((res)=>{
+        await axios.get(`https://localhost:8000/api/realtors/${prop.realtor}`).then((res)=>{
             setdata(res.data)
             console.log(res.data)
         })
