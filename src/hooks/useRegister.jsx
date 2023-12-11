@@ -12,7 +12,7 @@ export default function useRegister(){
     async function signup(email,password,username){
         setloading(true)
         const body={"email":email,"password":password,"name":username,"password2":password}
-        const res=await axios.post("https://realest-estate-the-website.onrender.com/api/accounts/signup",body).then((res)=>{return res}).catch((res)=>{return res})
+        const res=await axios.post("http://localhost:8000/api/accounts/signup",body).then((res)=>{return res}).catch((res)=>{return res})
         if(res.status===200){
             console.log("user added")
         }
