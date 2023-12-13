@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import useRegister from "../hooks/useRegister"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 export default function Register(){
@@ -8,12 +8,16 @@ export default function Register(){
     const [name,setname]=useState('')
     const [email,setemail]=useState('')
     const [password,setpassword]=useState('')
+    const navigate=useNavigate()
 
     const {signup,isloading}=useRegister()
 
-    const onRegister=((e)=>{
+    const onRegister=(async(e)=>{
         e.preventDefault()
-        signup(email,password,name)
+        await signup(email,password,name)
+        if(!isloading){
+            navigate('/login')
+        }
     })
 
     useEffect(()=>{
