@@ -10,7 +10,7 @@ export default function Listing(prop){
     const { value } = useAuthContext();
 
     return(
-        <div className="card m-3 border border-3" style={{"maxWidth":"40rem",height:"825px"}}>
+        <div className="card m-3 border border-3" style={{"width":"40rem","height":"825px"}}>
             <img height="400px" style={{objectFit:"cover"}} src={prop.data.photo_main}></img>
             <div className="d-flex flex-row">
                 <div className="p-3 flex-grow-1">

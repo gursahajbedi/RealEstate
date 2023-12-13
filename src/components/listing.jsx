@@ -30,8 +30,8 @@ export default function Listing(prop){
     },[state,findWish])
 
     return(
-        <div className="card m-3 border border-3" style={{"maxWidth":"50rem"}}>
-            <img height="500px" style={{objectFit:"cover"}} src={prop.data.photo_main}></img>
+        <div className="card m-3 border border-3" style={{"width":"50rem","height":"925px"}}>
+            <img style={{objectFit:"cover","width":"100%", height:"500px"}} src={prop.data.photo_main}></img>
             <div className="d-flex flex-row">
                 <div className="flex-grow-1 p-3">
                     <div className="d-flex flex-wrap">
