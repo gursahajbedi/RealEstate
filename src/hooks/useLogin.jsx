@@ -17,6 +17,7 @@ export default function useLogin(){
                 const updatedwusername={...res.data,email:email}
                 //updating the local storage
                 localStorage.setItem("user",JSON.stringify(updatedwusername))
+                localStorage.setItem("wishlistArr",JSON.stringify({"wishlist":[]}))
                 console.log("user logged in")
                 //updating the Auth Context
                 dispatchs({

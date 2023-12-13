@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import math from 'math'
 
-import useAuthContext from "../context/useAuthContext"
 import axios from 'axios'
 import Listing from "./listing"
 
@@ -35,7 +34,7 @@ export function Page(prop){
     )
 }
 
-export default function Home(){
+export default function Home(prop){
     const [data,setdata]=useState([])
     const [nextpage,setnextpage]=useState()
     const [prevpage,setprevpage]=useState()
@@ -55,7 +54,7 @@ export default function Home(){
 
             const newdata=data.map((item)=>{
                 // eslint-disable-next-line react/jsx-key
-                return <Listing data={item} key={item.id}/>
+                return <Listing data={item} key={item.id} setwish={prop.setwish} wish={prop.wish}/>
             })
             if(newdata.length==0){
                 setdata([])

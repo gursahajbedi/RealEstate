@@ -7,12 +7,32 @@ import useLogout from "./hooks/useLogout"
 import Property from "./components/property"
 import Contact from "./components/contact"
 import Enroll from "./components/enroll"
+import { useContext, useEffect, useState } from "react"
+import "./App.css"
+import { WishlistContext } from "./context/WishlistContext"
+import Listing from "./components/wishlist"
 
 
 function App() {
+  const {state}=useContext(WishlistContext)
   const {value}=useAuthContext()
   const {logout}=useLogout()
-  console.log(value)
+  const [active,setactive]=useState()
+  const [wishactive,setwishactive]=useState() 
+  const [wishdata,setwishdata]=useState()
+
+  useEffect(()=>{
+    const data=state.wishlist.map((item)=>{
+      return (
+        <div key={item.id} className="container-fluid p-0 d-flex justify-content-center">
+          <Listing data={item} key={item.id} setwishactive={setwishactive}/>
+        </div>
+      )
+    })
+    setwishdata(data)
+    
+  },[state])
+
   const Submitlogout=()=>{
     logout()
   }
@@ -22,7 +42,7 @@ function App() {
       <Router>
         <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/"><h1 className="display-3 fw-bold border-bottom border-4 pb-2 pt-2">RealEstate</h1></Link>
+            <Link className="navbar-brand" to="/"><h1 className="display-3 fw-bold ms-2 mt-2">Real-Estate</h1></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -44,16 +64,48 @@ function App() {
                   <Link className="nav-link active mt-3" to="/register"><h3>Register</h3></Link>
                 </li>)}
               </ul>
-              {value.user && (<form className="d-flex" role="search">
-                    <input className="form-control me-2"  type="search" placeholder="Search" aria-label="Search"></input>
-                    <button className="btn btn-lg btn-outline-success" type="submit">Search</button>
-              </form>)}
+              {value.user &&(
+              <div className="d-flex justify-content-center">
+                {!active?(<button className="btn btn-dark p-2 pb-1 mt-3 me-2" onClick={()=>{setactive(true)}}><span className="material-symbols-outlined" style={{"fontSize":"40px"}}>account_circle</span></button>):(<button className="btn btn-light p-2 pb-1 mt-3 me-2" onClick={()=>{setactive(false)}}><span className="material-symbols-outlined" style={{"fontSize":"40px"}}>cancel</span></button>)}
+              </div>
+              )}
             </div>
           </div>
-          {value.user &&(<button className="btn btn-lg btn-danger" onClick={Submitlogout}>Logout</button>)}
         </nav>
+        {value.user&&(<div>
+          {active &&(
+          <div className="d-flex justify-content-end class me-2">
+            <div className="border-top border-5 border-success bg-dark text-light rounded-bottom-5 d-flex flex-column justify-content-center align-items-center" id="div-menu">
+                <span className="material-symbols-outlined mb-4" id='face-icon'>
+                  face_6
+                </span>
+                <h1>Signed in As:</h1>
+                <h3>{value.user.email}</h3>
+                <div className="h3 mt-4 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={()=>{setwishactive(true)}}>
+                  Wishlist
+                </div>
+                <div className="h3 mt-3 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
+                  Logout
+                </div>
+            </div>
+          </div>
+          )}
+        </div>)}
+        {wishactive &&(
+        <div className="d-flex justify-content-center align-items-center" id="overlay">
+          <div className="border-top border-5 border-success bg-light d-flex flex-column justify-content-center align-items-center" id="wish-list">
+              <div className="container d-flex justify-content-between align-items-start border-bottom border-5 border-dark bg-dark text-light">
+                <h1 className="pt-3 ps-4 d-flex align-items-center">Wishlist<span className="material-icons fs-1 ps-1 text-danger">favorite</span></h1>                
+                <button className="btn btn-outline-light text-danger border-0 mt-3 pb-0  px-2" onClick={()=>{setwishactive(false)}}><span className="material-symbols-outlined fs-1">cancel</span></button>
+              </div>
+              <div className="container-fluid p-0 d-flex" style={{overflow:"auto"}}>
+                {wishdata}
+              </div>
+          </div>
+        </div>
+        )}
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home state={state}/>}/>
           <Route path="/login" element={!value.user?<Login/>:<Navigate to="/"/>} />
           <Route path="/register" element={!value.user?<Register/>:<Navigate to="/"/>}/>
           <Route path="/property" element={value.user?<Property/>:<Navigate to="/login"/>}/>

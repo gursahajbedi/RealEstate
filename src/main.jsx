@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { AuthContextProvider } from './context/AuthContext.jsx'
 import { render } from 'react-dom'
+import { WishlistContextProvider } from './context/WishlistContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthContextProvider>
-      <App />
-  </AuthContextProvider>
+  <WishlistContextProvider>
+    <AuthContextProvider>
+        <App />
+    </AuthContextProvider>
+  </WishlistContextProvider>
 )
