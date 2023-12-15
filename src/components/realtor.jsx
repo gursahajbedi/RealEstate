@@ -4,12 +4,12 @@ import useAuthContext from '../context/useAuthContext'
 
 export default function Realtor(prop){
     const[data,setdata]=useState({})
-    const{value}=useAuthContext()
-    axios.defaults.headers.common['Authorization']=`Bearer ${value.user.access}`
+    const{auth}=useAuthContext()
+    axios.defaults.headers.common['Authorization']=`Bearer ${auth.user.access}`
     
 
     const realtorinfo = async()=>{
-        await axios.get(`http://localhost:8000/api/realtors/${prop.realtor}`).then((res)=>{
+        await axios.get(`http://localhost:8000/api/accounts/${prop.realtor}`).then((res)=>{
             setdata(res.data)
             console.log(res.data)
         })
@@ -18,7 +18,7 @@ export default function Realtor(prop){
     useEffect(()=>{
         console.log(prop.realtor)
         realtorinfo()
-    },[value.user])
+    },[auth.user])
 
     return(
         <div className='d-flex flex-row flex-wrap mt-5 justify-content-center'>

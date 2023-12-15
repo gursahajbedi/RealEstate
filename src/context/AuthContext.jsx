@@ -10,27 +10,28 @@ export const AuthContext=createContext(initialValue)
 export const reducer=(state,action)=>{
     switch(action.type){
         case 'login':
-            return {user:action.payload}
+            return {...state,user:action.payload}
         case 'logout':
             return {user:null}
+        default:
+            return state
     }
 }
 
 // eslint-disable-next-line react/prop-types
 export const AuthContextProvider=({children})=>{
-    const [value,dispatchs]=useReducer(reducer,initialValue)
+    const [auth,dispatchs]=useReducer(reducer,initialValue)
 
     useEffect(()=>{
-        const user=JSON.parse(localStorage.getItem("user"))
-        console.log(user)
+        const user=JSON.parse(localStorage.getItem("user")) 
         dispatchs({type:"login",payload:user})
-        
+        console.log(auth,user)
     },[dispatchs])
 
-    console.log("AuthContext:",value)
+    console.log("AuthContext:",auth)
 
     return (
-        <AuthContext.Provider value={{value,dispatchs}}>
+        <AuthContext.Provider value={{auth,dispatchs}}>
             {children}
         </AuthContext.Provider>
     )

@@ -41,7 +41,6 @@ export const WishlistContextProvider=({children})=>{
     
     useEffect(()=>{
         const data=localStorage.getItem("wishlistArr")
-        console.log("Wishlist Data Loaded")
         if (data){
             const newdata=JSON.parse(data)
             if(newdata.wishlist.length!==0){

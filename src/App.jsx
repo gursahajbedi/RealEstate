@@ -15,7 +15,7 @@ import Listing from "./components/wishlist"
 
 function App() {
   const {state}=useContext(WishlistContext)
-  const {value}=useAuthContext()
+  const {auth}=useAuthContext()
   const {logout}=useLogout()
   const [active,setactive]=useState()
   const [wishactive,setwishactive]=useState() 
@@ -51,20 +51,20 @@ function App() {
                 <li className="nav-item border-bottom border-4">
                   <Link className="nav-link active mt-3" aria-current="page" to="/"><h3>Listing</h3></Link>
                 </li>
-                {value.user && (<li className="nav-item border-bottom border-4">
+                {auth.user && (<li className="nav-item border-bottom border-4">
                   <Link className="nav-link active mt-3" to="/contact"><h3>Contact</h3></Link>
                 </li>)}
-                {value.user && (<li className="nav-item border-bottom border-4">
+                {auth.user && (<li className="nav-item border-bottom border-4">
                   <Link className="nav-link active mt-3" to="/enroll"><h3>Enroll</h3></Link>
                 </li>)}
-                {!value.user && (<li className="nav-item border-bottom border-4">
+                {!auth.user && (<li className="nav-item border-bottom border-4">
                   <Link className="nav-link active mt-3" to="/login"><h3>Login</h3></Link>
                 </li>)}
-                {!value.user && (<li className="nav-item border-bottom border-4">
+                {!auth.user && (<li className="nav-item border-bottom border-4">
                   <Link className="nav-link active mt-3" to="/register"><h3>Register</h3></Link>
                 </li>)}
               </ul>
-              {value.user &&(
+              {auth.user &&(
               <div className="d-flex justify-content-center">
                 {!active?(<button className="btn btn-dark p-2 pb-1 mt-3 me-2" onClick={()=>{setactive(true)}}><span className="material-symbols-outlined" style={{"fontSize":"40px"}}>account_circle</span></button>):(<button className="btn btn-light p-2 pb-1 mt-3 me-2" onClick={()=>{setactive(false)}}><span className="material-symbols-outlined" style={{"fontSize":"40px"}}>cancel</span></button>)}
               </div>
@@ -72,19 +72,22 @@ function App() {
             </div>
           </div>
         </nav>
-        {value.user&&(<div>
+        {auth.user&&(<div>
           {active &&(
           <div className="d-flex justify-content-end class me-2">
             <div className="border-top border-5 border-success bg-dark text-light rounded-bottom-5 d-flex flex-column justify-content-center align-items-center" id="div-menu">
-                <span className="material-symbols-outlined mb-4" id='face-icon'>
+                <span className="material-symbols-outlined mb-2" id='face-icon'>
                   face_6
                 </span>
                 <h1>Signed in As:</h1>
-                <h3>{value.user.email}</h3>
-                <div className="h3 mt-4 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={()=>{setwishactive(true)}}>
+                <h3>{auth.user.email}</h3>
+                <div className="h3 mt-3 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={()=>{setwishactive(true)}}>
                   Wishlist
                 </div>
-                <div className="h3 mt-3 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
+                <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
+                  Profile
+                </div>
+                <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
                   Logout
                 </div>
             </div>
@@ -106,12 +109,11 @@ function App() {
         )}
         <Routes>
           <Route path="/" element={<Home state={state}/>}/>
-          <Route path="/login" element={!value.user?<Login/>:<Navigate to="/"/>} />
-          <Route path="/register" element={!value.user?<Register/>:<Navigate to="/"/>}/>
-          <Route path="/property" element={value.user?<Property/>:<Navigate to="/login"/>}/>
-          <Route path="/contact" element={value.user?<Contact/>:<Navigate to="/login"/>}/>
-          <Route path="/enroll" element={value.user?<Enroll/>:<Navigate to="/login"/>}/>
-          
+          <Route path="/login" element={!auth.user?<Login/>:<Navigate to="/"/>} />
+          <Route path="/register" element={!auth.user?<Register/>:<Navigate to="/"/>}/>
+          <Route path="/property" element={auth.user?<Property/>:<Navigate to="/login"/>}/>
+          <Route path="/contact" element={auth.user?<Contact/>:<Navigate to="/login"/>}/>
+          <Route path="/enroll" element={auth.user?<Enroll/>:<Navigate to="/login"/>}/>
         </Routes>
       </Router>
     </div>

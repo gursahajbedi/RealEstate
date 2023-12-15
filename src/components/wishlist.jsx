@@ -7,7 +7,7 @@ import "./wishlist.css"
 
 export default function Listing(prop){
     const {dispatch}=useContext(WishlistContext)
-    const { value } = useAuthContext();
+    const { auth } = useAuthContext();
 
     return(
         <div className="card m-3 border border-3" style={{"width":"40rem","height":"825px"}}>
@@ -16,7 +16,7 @@ export default function Listing(prop){
                 <div className="p-3 flex-grow-1">
                     <div className="">
                       <h4>{prop.data.title}</h4>
-                      {value.user && 
+                      {auth.user && 
                       (<div className="pb-3">
                         <button className="btn btn-light border p-0 text-danger d-flex align-items-center" onClick={()=>{dispatch({type:"REMOVE",payload:{id:prop.data.id}})}}><span className="material-icons fs-3">favorite</span>Remove from Wishlist</button>
                       </div>)}
@@ -56,7 +56,7 @@ export default function Listing(prop){
                 <h5 className="pt-3 fw-bold">Location</h5>
                 <div className="accordion-body"><b>Address:</b> {prop.data.address} | <b>City:</b> {prop.data.city} | <b>State:</b> {prop.data.state} | <b>Zipcode</b> :{prop.data.zipcode}</div>
             </div>
-            <NavLink to={value.user?'/property':'/login'} onClick={()=>{prop.setwishactive(false)}} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
+            <NavLink to={auth.user?'/property':'/login'} onClick={()=>{prop.setwishactive(false)}} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
         </div>
     )
 }

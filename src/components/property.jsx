@@ -26,7 +26,7 @@ export default function Property(){
                 <div className="py-3 container-fluid d-flex flex-column align-items-center carousel slide carousel-fade" style={{'maxWidth':'100rem'}} id="carouselExample">
                   <div className="carousel-inner">
                     {state.photo_main &&(<div className="carousel-item active">
-                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_main}></img>
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={`http://localhost:8000${state.photo_main}`}></img>
                     </div>)}
                     {state.photo_1 &&(<div className="carousel-item active">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_1}></img>
@@ -122,7 +122,7 @@ export default function Property(){
                             Realtor
                         </div>
                         <div>
-                            <Realtor realtor={state.realtor}/>
+                            <Realtor realtor={state['Realtor']}/>
                         </div>
                     </div>
                    

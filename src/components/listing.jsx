@@ -6,7 +6,7 @@ import { WishlistContext } from "../context/WishlistContext";
 
 export default function Listing(prop){
     const { state,dispatch }=useContext(WishlistContext)
-    const { value } = useAuthContext();
+    const { auth } = useAuthContext();
     const [wish,setwish]=useState()
 
     const findWish=()=>{
@@ -15,7 +15,6 @@ export default function Listing(prop){
                     return item
                 }
             })
-            console.log("idfound",xy)
             if(xy.length!=0){
                 setwish(true)
             }
@@ -25,7 +24,6 @@ export default function Listing(prop){
     }
 
     useEffect(()=>{
-        console.log(state)
         findWish()
     },[state,findWish])
 
@@ -36,7 +34,7 @@ export default function Listing(prop){
                 <div className="flex-grow-1 p-3">
                     <div className="d-flex flex-wrap">
                       <h4>{prop.data.title}</h4>
-                      {value.user && (<div className="ps-3">
+                      {auth.user && (<div className="ps-3">
                         {!wish && (<button className="btn btn-light border p-0 text-danger d-flex align-items-center" onClick={()=>{dispatch({type:"ADD",payload:prop.data})}}><span className="material-icons fs-3">favorite_border</span>Add to Wishlist</button>)}
                         {wish && (<button className="btn btn-light border p-0 text-danger d-flex align-items-center" onClick={()=>{dispatch({type:"REMOVE",payload:{id:prop.data.id}})}}><span className="material-icons fs-3">favorite</span>Remove from Wishlist</button>)}
                       </div>)}
@@ -79,7 +77,7 @@ export default function Listing(prop){
                 <h5 className="pt-3 fw-bold">Location</h5>
                 <div className="accordion-body"><b>Address:</b> {prop.data.address} | <b>City:</b> {prop.data.city} | <b>State:</b> {prop.data.state} | <b>Zipcode</b> :{prop.data.zipcode}</div>
             </div>
-            <NavLink to={value.user?'/property':'/login'} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
+            <NavLink to={auth.user?'/property':'/login'} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
         </div>
     )
 }
