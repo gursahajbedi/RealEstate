@@ -1,6 +1,8 @@
 import {useLocation} from "react-router-dom"
 import Realtor from "./realtor"
 
+
+
 function FeatureCard(prop){
 
     return(
@@ -26,7 +28,7 @@ export default function Property(){
                 <div className="py-3 container-fluid d-flex flex-column align-items-center carousel slide carousel-fade" style={{'maxWidth':'100rem'}} id="carouselExample">
                   <div className="carousel-inner">
                     {state.photo_main &&(<div className="carousel-item active">
-                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={`http://localhost:8000${state.photo_main}`}></img>
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_main}></img>
                     </div>)}
                     {state.photo_1 &&(<div className="carousel-item active">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_1}></img>
@@ -58,6 +60,37 @@ export default function Property(){
                     {state.photo_10 &&(<div className="carousel-item active">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_10}></img>
                     </div>)}
+                    {state.photo_11 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_11}></img>
+                    </div>)}
+                    {state.photo_12 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_12}></img>
+                    </div>)}
+                    {state.photo_13 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_13}></img>
+                    </div>)}
+                    {state.photo_14 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_14}></img>
+                    </div>)}
+                    {state.photo_15 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_15}></img>
+                    </div>)}
+                    {state.photo_16 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_16}></img>
+                    </div>)}
+                    {state.photo_17 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_17}></img>
+                    </div>)}
+                    {state.photo_18 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_18}></img>
+                    </div>)}
+                    {state.photo_19 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_19}></img>
+                    </div>)}
+                    {state.photo_20 &&(<div className="carousel-item active">
+                    <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_20}></img>
+                    </div>)}
+
                     
                   </div>
                   <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

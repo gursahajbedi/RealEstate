@@ -82,6 +82,25 @@ export default function Home(prop){
             const data=res.data.results
             console.log(res.data)
 
+            const prefix="http://localhost:8000"
+
+            data.forEach(result => {
+                if(result['photo_main']){
+                    result["photo_main"]=`${prefix}${result['photo_main']}`
+                }
+                for (let i = 1; i <= 20; i++) {
+                    const photoKey = `photo_${i}`;
+                    if (result[photoKey]) {
+                        result[photoKey] = `${prefix}${result[photoKey]}`;
+                    } else {
+                        // Break the loop if the variable doesn't exist
+                        break;
+                    }
+                }
+            });
+
+            console.log(data)
+
             const newdata=data.map((item)=>{
                 return <Listing data={item} key={item.id} setwish={prop.setwish} wish={prop.wish}/>
             })
