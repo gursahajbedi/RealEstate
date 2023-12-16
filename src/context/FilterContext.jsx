@@ -1,14 +1,14 @@
 import { createContext, useReducer } from "react"
 
 export const initialValue={
-    "home_type":"Apartment",
+    "home_type":"Any",
     "sale_type": "For Sale",
     "price": "Any",
     "bedrooms": "1+",
     "bathrooms": "1+",
     "sqft": "Any",
     "days_listed": "Any",
-    "property_age": "10-",
+    "property_age": "20-",
     "open_house":true,
     "keywords": ""
 }

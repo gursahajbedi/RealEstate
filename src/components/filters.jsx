@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react"
 import { FilterContext } from "../context/FilterContext"
 
-export default function Filters(){
+export default function Filters(prop){
+    const { setisFilter }=prop
     const {dispatch}=useContext(FilterContext)
-    const [homeType,setHomeType]=useState('apartment')
+    const [homeType,setHomeType]=useState('Any')
     const [saleType,setSaleType]=useState('for sale')
     const [price,setPrice]=useState('Any')
     const [bathrooms,setBathrooms]=useState('1+')
     const [bedrooms,setBedrooms]=useState("1+")
     const [sqft,setSqft]=useState('Any')
-    const [age,setAge]=useState('50-')
+    const [age,setAge]=useState('20-')
     const [open,setOpen]=useState(true)
 
     useEffect(()=>{
@@ -35,6 +36,18 @@ export default function Filters(){
       }
     }
 
+    function reset(e){
+      e.preventDefault()
+      setHomeType('Any')
+      setSaleType('for sale')
+      setPrice('Any')
+      setBathrooms('1+')
+      setBedrooms('1+')
+      setSqft('Any')
+      setAge('20-')
+      setOpen(true)
+    }
+
     function handleSubmit(e){
         e.preventDefault()
           dispatch({type:'home_type',payload:homeType})
@@ -48,15 +61,29 @@ export default function Filters(){
     }
 
     return(
-        <div>
+        <div className="border-top border-success bg-dark text-light border-5 rounded-4 mt-3 p-4">
+            <div className="d-flex justify-content-between">
+              <h1 className="m-3 border-bottom">Filters</h1>
+              <span className="material-icons text-danger btn btn-outline-light text-danger border-0 px-2 py-2 m-3 fs-2" onClick={()=>{setisFilter(false)}}>
+                cancel
+              </span>
+            </div>
             <form>
-                <div className="container-fluid d-flex flex-column align-items-center my-3">
+                <div className="container-fluid d-flex flex-column align-items-center my-3 py-3" style={{backgroundColor:"#16181a"}}>
                     <label>
                       <h1 className="h5">
                         Home Type:
                       </h1>
                     </label>
                     <div className="h6 fw-bold">
+                        <input
+                          className="mx-2"
+                          type="radio"
+                          value="Any"
+                          checked={homeType === 'Any'}
+                          onChange={(e) => setHomeType(e.target.value)}
+                        />
+                        Any
                         <input
                           className="mx-2"
                           type="radio"
@@ -91,7 +118,7 @@ export default function Filters(){
                         House
                     </div>
                 </div>
-                <div className="container-fluid d-flex flex-column align-items-center my-3">
+                <div className="container-fluid d-flex flex-column align-items-center my-3 py-3" style={{backgroundColor:"#16181a"}}>
                     <label>
                       <h1 className="h5">
                         Sale Type:
@@ -117,18 +144,18 @@ export default function Filters(){
                     </div>
                 </div>
                 {saleType=="for sale" &&(
-                  <div className="container-fluid d-flex flex-column align-items-center justify-content-center form-slider my-3">
+                  <div className="container-fluid d-flex flex-column align-items-center justify-content-center form-slider my-3 py-4" style={{backgroundColor:"#16181a"}}>
                         <label><h1 className="h5 form-label">Budget Under:<span className="fw-bold ps-2">{price!=='Any'?`₹${price.slice(0,price.length-1)}`:'Any'}</span></h1></label>
                         <input type="range" className="container form-range" min={1000000} max={100000000} step={1000000} value={price==='Any'?1000000:parseInt(price)} onChange={(e)=>{handleprice(e)}}></input>
                   </div>
                 )}
                 {saleType=="for rent" &&(
-                  <div className="container-fluid d-flex flex-column align-items-center justify-content-center form-slider my-3">
+                  <div className="container-fluid d-flex flex-column align-items-center justify-content-center form-slider my-3 py-4" style={{backgroundColor:"#16181a"}}>
                       <label><h1 className="h5 form-label">Budget Under:<span className="fw-bold ps-2">{price!=='Any'?`₹${price.slice(0,price.length-1)}`:'Any'}</span></h1></label>
                       <input type="range" className="container form-range" min={10000} max={500000} step={10000} value={price==='Any'?10000:parseInt(price)} onChange={(e)=>{handlepriceRent(e)}}></input>
                   </div>
                 )}
-                <div className="container d-flex flex-row justify-content-between">
+                <div className="container d-flex flex-row justify-content-between gap-5 pt-3" style={{backgroundColor:"#16181a"}}>
                   <div>
                   <div className="container-fluid d-flex flex-column align-items-center my-3">
                     <label>
@@ -273,7 +300,7 @@ export default function Filters(){
                       3600+
                     </div>
                   </div>
-                  <div className="container-fluid d-flex flex-column align-items-center my-3">
+                  <div className="container-fluid d-flex flex-column align-items-center my-4">
                     <label className="h5">
                       Age of Property:
                     </label>
@@ -285,7 +312,7 @@ export default function Filters(){
                         checked={age === '1-'}
                         onChange={(e) => setAge(e.target.value)}
                       />
-                      Less than 1
+                      &lt; 1
                       <input
                         className="mx-2"
                         type="radio"
@@ -293,7 +320,7 @@ export default function Filters(){
                         checked={age === '5-'}
                         onChange={(e) => setAge(e.target.value)}
                       />
-                      Less than 5
+                      &lt; 5
                       <input
                         className="mx-2"
                         type="radio"
@@ -301,7 +328,7 @@ export default function Filters(){
                         checked={age === '10-'}
                         onChange={(e) => setAge(e.target.value)}
                       />
-                      Less than 10 
+                      &lt; 10 
                       <input
                         className="mx-2"
                         type="radio"
@@ -309,19 +336,21 @@ export default function Filters(){
                         checked={age === '20-'}
                         onChange={(e) => setAge(e.target.value)}
                       />
-                      Less than 20
+                      &lt; 20
                     </div>
                   </div>
                   </div>
                   </div>
-                  <div className="container form-check form-switch d-flex justify-content-around my-3">
+                  <div className="container form-check form-switch d-flex justify-content-around mt-3 py-3 pt-4" style={{backgroundColor:"#16181a"}}>
                     <div>
                     <input type="checkbox" className="container form-check-input" id="customSwitch1" checked={open===true} onChange={()=>{setOpen((e)=>!e)}}/>
                     <label className="form-check-label container " htmlFor="customSwitch1"><h1 className="h5">Open House</h1></label>
                     </div>
                   </div>
-                <button type="submit" className="btn btn-success" onClick={(e)=>{handleSubmit(e)}}>Submit</button>
-                
+                  <div className="d-flex justify-content-center py-3 gap-4">
+                    <button type="submit" className="btn btn-primary fs-5" onClick={(e)=>{handleSubmit(e);setisFilter(false)}}>Apply Filters</button>
+                    <button type="submit" className="btn btn-success fs-5" onClick={(e)=>{reset(e)}}>Reset</button>
+                  </div>
             </form>
         </div>
     )

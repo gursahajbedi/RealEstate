@@ -45,6 +45,7 @@ export default function Home(prop){
     const [prevpage,setprevpage]=useState()
     const [page,setpage]=useState(1)
     const [elementcount,setelementcount]=useState()
+    const [isFilter,setisFilter]=useState(false)
 
     const getpropertylisting=async()=>{
         await axios.get(`http://localhost:8000/api/listings/?page=${page}`).then((res)=>{
@@ -127,9 +128,17 @@ export default function Home(prop){
     return(
         <div>
             <div className="container-fluid">
-                <div className="container-fluid card d-flex justify-content-center">
-                    <Filters/>
-                </div>
+                {!isFilter?(
+                    <div className="mt-3 ms-3">
+                        <button className="btn btn-dark" onClick={()=>{setisFilter(true)}}>
+                            <span className="material-icons fs-3 pt-1">
+                                tune
+                            </span>
+                        </button>
+                    </div>
+                ):(<div className="container-fluid d-flex justify-content-center">
+                    <Filters setisFilter={setisFilter}/>
+                </div>)}
                 {data.length==0?(
                     <h1>No listing available</h1>
                 ):(
