@@ -155,7 +155,7 @@ export default function Home(prop){
                     </div>
                 )}
                 </div>
-            <div className="container-fluid d-flex flex-column align-items-center my-5 py-3">
+            <div className="container-fluid d-flex flex-column align-items-center my-5 py-3 ">
                 {elementcount>6 && (<Page nextpage={nextpage} prevpage={prevpage} setpage={setpage} elementcount={elementcount} page={page}/>)}
             </div>
         </div>
