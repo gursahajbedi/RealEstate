@@ -3,15 +3,15 @@ import { FilterContext } from "../context/FilterContext"
 
 export default function Filters(prop){
     const { setisFilter }=prop
-    const {dispatch}=useContext(FilterContext)
-    const [homeType,setHomeType]=useState('Any')
-    const [saleType,setSaleType]=useState('for sale')
-    const [price,setPrice]=useState('Any')
-    const [bathrooms,setBathrooms]=useState('1+')
-    const [bedrooms,setBedrooms]=useState("1+")
-    const [sqft,setSqft]=useState('Any')
-    const [age,setAge]=useState('20-')
-    const [open,setOpen]=useState(true)
+    const {filterState,dispatch}=useContext(FilterContext)
+    const [homeType,setHomeType]=useState(filterState['home_type'])
+    const [saleType,setSaleType]=useState(filterState['sale_type'])
+    const [price,setPrice]=useState(filterState['price'])
+    const [bathrooms,setBathrooms]=useState(filterState['bathrooms'])
+    const [bedrooms,setBedrooms]=useState(filterState['bedrooms'])
+    const [sqft,setSqft]=useState(filterState['sqft'])
+    const [age,setAge]=useState(filterState['property_age'])
+    const [open,setOpen]=useState(filterState['open_house'])
 
     useEffect(()=>{
       console.log(price)
