@@ -38,7 +38,7 @@ export function FilterReducer(state,action){
         case 'keywords':
             return{...state,"keywords": action.payload}
         default:
-            return state;
+            return initialValue;
     }
 }
 

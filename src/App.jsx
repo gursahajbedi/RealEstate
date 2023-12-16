@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from "react"
 import "./App.css"
 import { WishlistContext } from "./context/WishlistContext"
 import Listing from "./components/wishlist"
+import { FilterContext } from "./context/FilterContext"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const [active,setactive]=useState()
   const [wishactive,setwishactive]=useState() 
   const [wishdata,setwishdata]=useState()
+  const {dispatch}=useContext(FilterContext)
 
   useEffect(()=>{
     const data=state.wishlist.map((item)=>{
@@ -34,6 +36,7 @@ function App() {
   },[state])
 
   const Submitlogout=()=>{
+    dispatch({type:"",payload:""})
     logout()
   }
   return (

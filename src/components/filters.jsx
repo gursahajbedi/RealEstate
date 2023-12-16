@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { FilterContext } from "../context/FilterContext"
 
 export default function Filters(prop){
-    const { setisFilter }=prop
+    const { setisFilter,setpage }=prop
     const {filterState,dispatch}=useContext(FilterContext)
     const [homeType,setHomeType]=useState(filterState['home_type'])
     const [saleType,setSaleType]=useState(filterState['sale_type'])
@@ -348,7 +348,7 @@ export default function Filters(prop){
                     </div>
                   </div>
                   <div className="d-flex justify-content-center py-3 gap-4">
-                    <button type="submit" className="btn btn-primary fs-5" onClick={(e)=>{handleSubmit(e);setisFilter(false)}}>Apply Filters</button>
+                    <button type="submit" className="btn btn-primary fs-5" onClick={(e)=>{handleSubmit(e);setisFilter(false);setpage(1)}}>Apply Filters</button>
                     <button type="submit" className="btn btn-success fs-5" onClick={(e)=>{reset(e)}}>Reset</button>
                   </div>
             </form>

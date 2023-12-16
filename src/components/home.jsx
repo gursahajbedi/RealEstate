@@ -125,6 +125,10 @@ export default function Home(prop){
         }
     },[auth.user,filterState,page])
 
+    useEffect(()=>{
+        setpage(1)
+    },[filterState])
+
     return(
         <div>
             <div className="container-fluid">
@@ -139,7 +143,7 @@ export default function Home(prop){
                         </button>
                     </div>
                 ):(<div className="container-fluid d-flex justify-content-center">
-                    <Filters setisFilter={setisFilter}/>
+                    <Filters setisFilter={setisFilter} setpage={setpage}/>
                 </div>)}
                 </span>
                 )}
