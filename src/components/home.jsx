@@ -128,6 +128,8 @@ export default function Home(prop){
     return(
         <div>
             <div className="container-fluid">
+                {auth.user && (
+                <span>
                 {!isFilter?(
                     <div className="mt-3 ms-3">
                         <button className="btn btn-dark" onClick={()=>{setisFilter(true)}}>
@@ -139,6 +141,8 @@ export default function Home(prop){
                 ):(<div className="container-fluid d-flex justify-content-center">
                     <Filters setisFilter={setisFilter}/>
                 </div>)}
+                </span>
+                )}
                 {data.length==0?(
                     <h1>No listing available</h1>
                 ):(
