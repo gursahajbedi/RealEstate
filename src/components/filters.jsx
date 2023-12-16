@@ -1,9 +1,35 @@
 import { useContext, useEffect, useState } from "react"
 import { FilterContext } from "../context/FilterContext"
+import { statesData } from "./statesIndia";
+
+const StateForm = (prop) => {
+  const {state, setState} = prop;
+ 
+  const handleChange = (event) => {
+     setState(event.target.value);
+  };
+ 
+  return (
+     <form className="d-flex justify-content-center align-items-center flex-column">
+       <label className="h5" htmlFor="state">State:</label>
+       <select id="state" className="form-select bg-dark text-light" value={state} onChange={handleChange}>
+         <option value="">Select a state</option>
+         {statesData.map((state) => (
+           <option key={state} value={state}>
+             {state}
+           </option>
+         ))}
+       </select>
+     </form>
+  );
+ };
 
 export default function Filters(prop){
     const { setisFilter,setpage }=prop
     const {filterState,dispatch}=useContext(FilterContext)
+
+    const [state,setState]=useState(filterState['state'])
+
     const [homeType,setHomeType]=useState(filterState['home_type'])
     const [saleType,setSaleType]=useState(filterState['sale_type'])
     const [price,setPrice]=useState(filterState['price'])
@@ -13,9 +39,6 @@ export default function Filters(prop){
     const [age,setAge]=useState(filterState['property_age'])
     const [open,setOpen]=useState(filterState['open_house'])
 
-    useEffect(()=>{
-      console.log(price)
-    })
 
     function handleprice(e){
       const price=e.target.value
@@ -46,6 +69,7 @@ export default function Filters(prop){
       setSqft('Any')
       setAge('20-')
       setOpen(true)
+      setState("")
     }
 
     function handleSubmit(e){
@@ -58,6 +82,7 @@ export default function Filters(prop){
           dispatch({type:"sqft",payload:sqft})
           dispatch({type:"property_age",payload:age})
           dispatch({type:"open_house",payload:open})
+          dispatch({type:"state",payload:state})
     }
 
     return(
@@ -340,6 +365,9 @@ export default function Filters(prop){
                     </div>
                   </div>
                   </div>
+                  </div>
+                  <div className="container-fluid d-flex flex-column align-items-center my-3 py-3" style={{backgroundColor:"#16181a"}}>
+                    <StateForm state={state} setState={setState}/>
                   </div>
                   <div className="container form-check form-switch d-flex justify-content-around mt-3 py-3 pt-4" style={{backgroundColor:"#16181a"}}>
                     <div>

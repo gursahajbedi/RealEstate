@@ -20,13 +20,9 @@ export default function Register(){
         }
     })
 
-    useEffect(()=>{
-        console.log(name,email,password)
-    })
-
     return(
         <div>
-        {!isloading?(<div className="container my-5">
+        {!isloading?(<div className="container my-5 border-3 bg-light border p-3">
             <h1 className="display-3 fw-normal border-bottom border-2 border-dark mb-5">Register</h1>
             <div className="container-fluid">
                 <form>

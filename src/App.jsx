@@ -1,17 +1,22 @@
 import Login from "./components/login"
 import Register from "./components/register"
-import { BrowserRouter as Router, Route, Routes, Navigate, Link} from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Navigate, Link, NavLink} from "react-router-dom"
 import useAuthContext from "./context/useAuthContext"
 import Home from "./components/home"
 import useLogout from "./hooks/useLogout"
 import Property from "./components/property"
 import Contact from "./components/contact"
-import Enroll from "./components/enroll"
 import { useContext, useEffect, useState } from "react"
 import "./App.css"
 import { WishlistContext } from "./context/WishlistContext"
 import Listing from "./components/wishlist"
 import { FilterContext } from "./context/FilterContext"
+import Profile from "./components/profile"
+
+import axios from "axios"
+import { RealtorContext } from "./context/RealtorContext"
+import AddListing from "./components/addlisting"
+import AboutUs from "./components/aboutus"
 
 
 function App() {
@@ -22,6 +27,7 @@ function App() {
   const [wishactive,setwishactive]=useState() 
   const [wishdata,setwishdata]=useState()
   const {dispatch}=useContext(FilterContext)
+  const {realtorValue,Rdispatch}=useContext(RealtorContext)
 
   useEffect(()=>{
     const data=state.wishlist.map((item)=>{
@@ -34,6 +40,26 @@ function App() {
     setwishdata(data)
     
   },[state])
+
+  useEffect(()=>{
+    const getProfile=async()=>{
+      const RealtorData=await axios.get(`http://localhost:8000/api/accounts/${auth.user.id}`,{
+          headers:{Authorization:`Bearer ${auth.user.access}`}
+      }).then((res)=>{
+          return res.data
+      })
+      if (RealtorData.email_optional && RealtorData.phone && RealtorData.description && RealtorData.name){
+        Rdispatch({type:"SET",payload:true})
+      }
+      else{
+        Rdispatch({type:"SET",payload:false})
+      }
+    }
+    if(auth.user){
+      getProfile()
+    }
+    console.log(realtorValue)
+  },[auth.user])
 
   const Submitlogout=()=>{
     dispatch({type:"",payload:""})
@@ -55,10 +81,13 @@ function App() {
                   <Link className="nav-link active mt-3" aria-current="page" to="/"><h3>Listing</h3></Link>
                 </li>
                 {auth.user && (<li className="nav-item border-bottom border-4">
-                  <Link className="nav-link active mt-3" to="/contact"><h3>Contact</h3></Link>
+                  <Link className="nav-link active mt-3" to="/contact"><h3>Contact Us</h3></Link>
                 </li>)}
                 {auth.user && (<li className="nav-item border-bottom border-4">
-                  <Link className="nav-link active mt-3" to="/enroll"><h3>Enroll</h3></Link>
+                  <Link className="nav-link active mt-3" to="/aboutus"><h3>About Us</h3></Link>
+                </li>)}
+                {auth.user && (<li className="nav-item border-bottom border-4">
+                  <Link className="nav-link active mt-3" to="/addlisting"><h3 className="d-flex align-items-center"><span className="pe-2 material-icons fs-4">add_circle</span>Add Listing</h3></Link>
                 </li>)}
                 {!auth.user && (<li className="nav-item border-bottom border-4">
                   <Link className="nav-link active mt-3" to="/login"><h3>Login</h3></Link>
@@ -83,12 +112,12 @@ function App() {
                   face_6
                 </span>
                 <h1>Signed in As:</h1>
-                <h3>{auth.user.email}</h3>
+                <h3>{auth.user.user}</h3>
                 <div className="h3 mt-3 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={()=>{setwishactive(true)}}>
                   Wishlist
                 </div>
-                <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
-                  Profile
+                <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover">
+                  <NavLink to={'/profile'} className='text-decoration-none text-light'>Profile</NavLink>
                 </div>
                 <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
                   Logout
@@ -116,10 +145,12 @@ function App() {
           <Route path="/register" element={!auth.user?<Register/>:<Navigate to="/"/>}/>
           <Route path="/property" element={auth.user?<Property/>:<Navigate to="/login"/>}/>
           <Route path="/contact" element={auth.user?<Contact/>:<Navigate to="/login"/>}/>
-          <Route path="/enroll" element={auth.user?<Enroll/>:<Navigate to="/login"/>}/>
+          <Route path="/profile" element={auth.user?<Profile/>:<Navigate to="/login"/>}/>
+          <Route path="/aboutus" element={auth.user?<AboutUs/>:<Navigate to="/login"/>}/>
+          <Route path="/addlisting" element={realtorValue.isRealtor?<AddListing/>:<Navigate to="/profile"/>}/>
         </Routes>
       </Router>
-      <footer className="p-5 pt-4 my-md-5 pt-md-5 border-top">
+      <footer className="p-5 border border-3 pt-4 my-md-5 pt-md-5 border-top container-fluid bg-light">
         <div className="row">
           <div className="col-12 col-md">
             <h1>Real-Estate</h1>

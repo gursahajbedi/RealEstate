@@ -6,11 +6,11 @@ import Realtor from "./realtor"
 function FeatureCard(prop){
 
     return(
-        <div className="mx-5 my-3 p-5 card d-flex flex-column justify-content-between align-items-center btn btn-outline-success border border-3 border-success">
-            <div className="card-title h5">
+        <div className="mx-4 my-3 p-4 card d-flex flex-column justify-content-between align-items-center btn btn-outline-success border border-3 border-success" style={{width:"200px"}}>
+            <div className="card-title h6">
                 {prop.head}
             </div>
-            <div className="card-subtitle h3 mt-2">
+            <div className="card-subtitle h5 mt-2">
                 {prop.value}
             </div>
         </div>
@@ -20,12 +20,11 @@ function FeatureCard(prop){
 export default function Property(){
     const loc=useLocation()
     const {state}=loc
-    console.log("Property",state)
 
     return(
         <div>
-            <div className="bg-dark">
-                <div className="py-3 container-fluid d-flex flex-column align-items-center carousel slide carousel-fade" style={{'maxWidth':'100rem'}} id="carouselExample">
+            <div>
+                <div className="mt-3 border-top border-start border-end border-3 pt-3 bg-light container d-flex flex-column align-items-center carousel slide carousel-fade" style={{'maxWidth':'75rem'}} id="carouselExample">
                   <div className="carousel-inner">
                     {state.photo_main &&(<div className="carousel-item active">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_main}></img>
@@ -103,12 +102,12 @@ export default function Property(){
                   </button>
                 </div>
             </div>
-            <div className="container" style={{"maxWidth":'100rem'}}>
+            <div className="container bg-light px-5 border-3 border-bottom border-start border-end" style={{"maxWidth":'75rem'}}>
                 <div className="d-flex flex-row border-bottom border-2 border-secondary">
-                    <div className="flex-grow-1 d-flex flex-row align-items-end mt-5"><h1 className="h1 fw-bold">{state.title}<span className="h2 fw-normal text-secondary ps-4"><span className="material-symbols-outlined">
+                    <div className="flex-grow-1 d-flex flex-row align-items-end mt-5"><h1 className="h2 fw-bold">{state.title}<span className="h2 fw-normal text-secondary ps-4"><span className="material-symbols-outlined">
                             location_on
                         </span> {state.city}, {state.state}</span></h1></div>
-                    <h1 className="d-flex flex-column justify-content-end h1 fw-bold pe-5">₹{state.price}/-</h1>
+                    <h1 className="d-flex flex-column justify-content-end h2 fw-bold pe-5">₹{state.price}/-</h1>
                     {
                         state.sale_type==="For Rent"&&(
                             <div className="bg-danger d-flex flex-column justify-content-center align-items-center p-3 rounded-bottom-5">
@@ -132,10 +131,10 @@ export default function Property(){
                 </div>
                 <div className="mt-3">
                     <div className="mt-3">
-                        <h4>{state.desc}</h4>
+                        {state.desc}
                     </div>
                     <div>
-                        <div className="pb-3 fw-bold h1 mt-5 border-bottom border-2 border-dark fw-normal">
+                        <div className="pb-3 fw-bold h2 mt-5 border-bottom border-2 border-dark fw-normal">
                             Features
                         </div>
                         <div className="d-flex flex-row flex-wrap justify-content-center">
@@ -150,10 +149,10 @@ export default function Property(){
                         </div>
                     </div>
                     <div>
-                        <div className="pb-3 h1 fw-bold mt-3 border-bottom border-2 border-dark fw-normal">
+                        <div className="pb-3 h2 fw-bold mt-3 border-bottom border-2 border-dark fw-normal">
                             Realtor
                         </div>
-                        <div>
+                        <div className="pb-5">
                             <Realtor realtor={state['Realtor']}/>
                         </div>
                     </div>

@@ -33,7 +33,7 @@ export default function Listing(prop){
     },[state,findWish])
 
     return(
-        <div className="card m-3 border border-3" style={{"width":"50rem","height":"985px"}}>
+        <div className="bg-light card m-3 border border-3" style={{"width":"50rem","height":"985px"}}>
             <div>
                 {prop.data.verified &&(
                     <div id='verified-badge' className="m-2 p-0 d-flex flex-row bg-light align-items-center rounded-4">

@@ -13,13 +13,9 @@ export default function Login(){
         e.preventDefault()
         login(email,password)
     })
-
-    useEffect(()=>{
-        console.log(email,password)
-    })
     return(
-        <div>
-        {!isloading?(<div className="container my-5">
+        <div className="container bg-light border-3 border p-3 mt-5">
+        {!isloading?(<div className="container">
             <h1 className="display-3 fw-normal border-bottom border-2 border-dark mb-5">Login</h1>
             <div className="container-fluid">
                 <form onSubmit={(e)=>onLogin(e)}>

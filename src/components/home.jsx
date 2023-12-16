@@ -17,7 +17,7 @@ export function Page(prop){
     }
 
     const data=arr.map((item)=>{
-        console.log(item)
+        
         if(item==prop.page){
             return (<div key={item} className="page-item"><button className="page-link bg-primary text-light px-3" onClick={()=>prop.setpage(item)}><h5>{item}</h5></button></div>)
         }
@@ -55,7 +55,7 @@ export default function Home(prop){
             const data=res.data.results
             //we will give this data to the reducer
 
-            console.log(res.data)
+            
 
             const newdata=data.map((item)=>{
                 // eslint-disable-next-line react/jsx-key
@@ -81,7 +81,7 @@ export default function Home(prop){
             setprevpage(res.data.previous)
             setelementcount(res.data.count)
             const data=res.data.results
-            console.log(res.data)
+            
 
             const prefix="http://localhost:8000"
 
@@ -100,7 +100,7 @@ export default function Home(prop){
                 }
             });
 
-            console.log(data)
+            
 
             const newdata=data.map((item)=>{
                 return <Listing data={item} key={item.id} setwish={prop.setwish} wish={prop.wish}/>
@@ -116,7 +116,6 @@ export default function Home(prop){
     }
 
     useEffect(()=>{
-        console.log(filterState)
         if(auth.user!==null){
             filterslisting()
         }
@@ -150,7 +149,7 @@ export default function Home(prop){
                 {data.length==0?(
                     <h1>No listing available</h1>
                 ):(
-                    <div className="container-fluid card d-flex flex-row flex-wrap justify-content-center gap-5 border-0">
+                    <div className="container-fluid d-flex flex-row flex-wrap justify-content-center gap-5 border-0">
                         {data} 
                     </div>
                 )}

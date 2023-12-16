@@ -10,7 +10,8 @@ export const initialValue={
     "days_listed": "Any",
     "property_age": "20-",
     "open_house":true,
-    "keywords": ""
+    "keywords": "",
+    "state":""
 }
 
 export const FilterContext = createContext(initialValue)
@@ -37,6 +38,8 @@ export function FilterReducer(state,action){
             return{...state,"open_house":action.payload}
         case 'keywords':
             return{...state,"keywords": action.payload}
+        case 'state':
+                return{...state,"state": action.payload}
         default:
             return initialValue;
     }

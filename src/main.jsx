@@ -5,13 +5,16 @@ import { AuthContextProvider } from './context/AuthContext.jsx'
 import { render } from 'react-dom'
 import { WishlistContextProvider } from './context/WishlistContext.jsx'
 import { FilterProvider } from './context/FilterContext.jsx'
+import { RealtorContextProvider } from './context/RealtorContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthContextProvider>
-    <WishlistContextProvider>
-      <FilterProvider>
-          <App />
-      </FilterProvider>
-    </WishlistContextProvider>
+    <RealtorContextProvider>
+      <WishlistContextProvider>
+        <FilterProvider>
+            <App />
+        </FilterProvider>
+      </WishlistContextProvider>
+    </RealtorContextProvider>
   </AuthContextProvider>
 )

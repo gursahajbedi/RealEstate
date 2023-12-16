@@ -11,12 +11,10 @@ export default function Realtor(prop){
     const realtorinfo = async()=>{
         await axios.get(`http://localhost:8000/api/accounts/${prop.realtor}`).then((res)=>{
             setdata(res.data)
-            console.log(res.data)
         })
     }
 
     useEffect(()=>{
-        console.log(prop.realtor)
         realtorinfo()
     },[auth.user])
 
@@ -37,7 +35,7 @@ export default function Realtor(prop){
                     <h5>Mobile : +91 {data.phone}</h5>
                 </div>
                 <div className='mt-2 ms-5 btn btn-outline-dark border border-2 border-primary'>
-                    <h5>E-Mail : {data.email}</h5>
+                    <h5>E-Mail : {data.email_optional}</h5>
                 </div>
             </div>
         </div>
