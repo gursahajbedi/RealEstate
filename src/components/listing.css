@@ -1,0 +1,14 @@
+#verified-badge{
+    z-index: 2;
+    position: absolute;
+}
+
+#wishlist-button{
+    z-index: 2;
+    position: absolute;
+    left:715px;
+}
+
+#like{
+    font-size: 60px;
+}

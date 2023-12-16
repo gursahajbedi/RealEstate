@@ -19,10 +19,10 @@ export function Page(prop){
     const data=arr.map((item)=>{
         console.log(item)
         if(item==prop.page){
-            return (<div key={item} className="page-item"><button className="page-link bg-primary text-light px-3" onClick={()=>prop.setpage(item)}><h1>{item}</h1></button></div>)
+            return (<div key={item} className="page-item"><button className="page-link bg-primary text-light px-3" onClick={()=>prop.setpage(item)}><h5>{item}</h5></button></div>)
         }
         else{
-            return (<div key={item} className="page-item"><button className="page-link" onClick={()=>prop.setpage(item)}><h1>{item}</h1></button></div>)
+            return (<div key={item} className="page-item"><button className="page-link" onClick={()=>prop.setpage(item)}><h5>{item}</h5></button></div>)
         }
     })
 
@@ -155,7 +155,7 @@ export default function Home(prop){
                     </div>
                 )}
                 </div>
-            <div className="container-fluid d-flex flex-column align-items-center my-5 py-3 bg-dark">
+            <div className="container-fluid d-flex flex-column align-items-center my-5 py-3">
                 {elementcount>6 && (<Page nextpage={nextpage} prevpage={prevpage} setpage={setpage} elementcount={elementcount} page={page}/>)}
             </div>
         </div>

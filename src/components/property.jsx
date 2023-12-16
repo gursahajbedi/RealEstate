@@ -6,11 +6,11 @@ import Realtor from "./realtor"
 function FeatureCard(prop){
 
     return(
-        <div className="m-5 p-5 card d-flex flex-column align-items-center btn btn-outline-success border border-3 border-success">
-            <div className="card-title h3">
+        <div className="mx-5 my-3 p-5 card d-flex flex-column justify-content-between align-items-center btn btn-outline-success border border-3 border-success">
+            <div className="card-title h5">
                 {prop.head}
             </div>
-            <div className="card-subtitle h2 mt-2">
+            <div className="card-subtitle h3 mt-2">
                 {prop.value}
             </div>
         </div>
@@ -105,8 +105,10 @@ export default function Property(){
             </div>
             <div className="container" style={{"maxWidth":'100rem'}}>
                 <div className="d-flex flex-row border-bottom border-2 border-secondary">
-                    <h1 className="flex-grow-1 d-flex flex-row align-items-end mt-5 display-1 fw-normal">{state.title}</h1>
-                    <h1 className="d-flex flex-column justify-content-end display-2 fw-bold pe-5">₹{state.price}/-</h1>
+                    <div className="flex-grow-1 d-flex flex-row align-items-end mt-5"><h1 className="h1 fw-bold">{state.title}<span className="h2 fw-normal text-secondary ps-4"><span className="material-symbols-outlined">
+                            location_on
+                        </span> {state.city}, {state.state}</span></h1></div>
+                    <h1 className="d-flex flex-column justify-content-end h1 fw-bold pe-5">₹{state.price}/-</h1>
                     {
                         state.sale_type==="For Rent"&&(
                             <div className="bg-danger d-flex flex-column justify-content-center align-items-center p-3 rounded-bottom-5">
@@ -120,25 +122,20 @@ export default function Property(){
                     {
                         state.sale_type==="For Sale"&&(
                          <div className="bg-success d-flex flex-column justify-content-center align-items-center p-3 rounded-bottom-5">
-                                <h3>S</h3>
-                                <h3>A</h3>
-                                <h3>L</h3>
-                                <h3>E</h3>
+                                <h4>S</h4>
+                                <h4>A</h4>
+                                <h4>L</h4>
+                                <h4>E</h4>
                             </div>
                         )
                     }
                 </div>
                 <div className="mt-3">
-                    <div>
-                        <span className="h3 fw-normal text-secondary mb-2 ms-3"><span className="material-symbols-outlined">
-                            location_on
-                        </span> {state.city}, {state.state}</span>
-                    </div>
                     <div className="mt-3">
                         <h4>{state.desc}</h4>
                     </div>
                     <div>
-                        <div className="pb-3 display-5 mt-5 border-bottom border-2 border-dark fw-normal">
+                        <div className="pb-3 fw-bold h1 mt-5 border-bottom border-2 border-dark fw-normal">
                             Features
                         </div>
                         <div className="d-flex flex-row flex-wrap justify-content-center">
@@ -148,10 +145,12 @@ export default function Property(){
                             <FeatureCard head={"Open House"} value={state.open_house?"Yes":"No"}/>
                             <FeatureCard head={"Available"} value={state.sale_type}/>
                             <FeatureCard head={"Space"} value={state.sqft+" sqft"}/>
+                            <FeatureCard head={"Property Age"} value={state.property_age}/>
+                            <FeatureCard head={"Furniture Type"} value={state.furniture_type}/>
                         </div>
                     </div>
                     <div>
-                        <div className="pb-3 display-5 mt-5 border-bottom border-2 border-dark fw-normal">
+                        <div className="pb-3 h1 fw-bold mt-3 border-bottom border-2 border-dark fw-normal">
                             Realtor
                         </div>
                         <div>

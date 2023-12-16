@@ -21,25 +21,26 @@ export default function Realtor(prop){
     },[auth.user])
 
     return(
-        <div className='d-flex flex-row flex-wrap mt-5 justify-content-center'>
-            <div className='card'>
-                <img style={{"width":"300px", "height":"400px","objectFit":"cover"}} src={data.photo}></img>
+        <div className='d-flex flex-row flex-wrap mt-5 justify-content-center align-items-center'>
+            <div className='d-flex align-items-center'>
+                <img className="" style={{"width":"300px", "height":"300px","objectFit":"cover","borderRadius":"100%"}} src={data.photo}></img>
             </div>
             <div className='d-flex flex-column align-items-start justify-content-center'>
-                <div className='display-6 p-5 pt-3 pb-0 fw-normal'>
+                <div className='h2 p-5 pt-3 pb-0 fw-normal'>
                     Realtor: {data.name}
                 </div>
-                <div className='h4 ms-5 fw-normal text-secondary mb-3'>
+                <div className='h5 ms-5 fw-normal text-secondary'>
                     {data.description}
                 </div>
                 <hr/>
                 <div className='ms-5 btn btn-outline-dark border border-2 border-primary'>
-                    <h2>Mobile : +91 {data.phone}</h2>
+                    <h5>Mobile : +91 {data.phone}</h5>
                 </div>
-                <div className='mt-4 ms-5 btn btn-outline-dark border border-2 border-primary'>
-                    <h2>E-Mail : {data.email}</h2>
+                <div className='mt-2 ms-5 btn btn-outline-dark border border-2 border-primary'>
+                    <h5>E-Mail : {data.email}</h5>
                 </div>
             </div>
         </div>
     )
+    
 }
