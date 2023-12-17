@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import useAuthContext from "../context/useAuthContext"
+import {useNavigate} from "react-router-dom"
 
 export default function AddListing(){
     const {auth}=useAuthContext()
@@ -24,6 +25,7 @@ export default function AddListing(){
         "title":'',
         "open_house":true
     })
+    const navigate=useNavigate()
 
     const [coverImg,setCoverImg]=useState(null)
     const handleCoverImg=(e)=>{
@@ -49,7 +51,7 @@ export default function AddListing(){
             "slug":formdata.title.toLowerCase().replace(/ /g, '-'),
             "title":formdata.title,
             "address":formdata.address,
-            "city":formdata.address,
+            "city":formdata.city,
             "state":formdata.state,
             "zipcode":formdata.zipcode,
             "desc":formdata.desc,
@@ -73,6 +75,7 @@ export default function AddListing(){
         }).then((res)=>{
             console.log(res.data)
             setloading(false)
+            navigate('/')
         })
     }
 
@@ -216,12 +219,12 @@ export default function AddListing(){
                         <label>Description
                             <textarea 
                                 className='form-control'
-                                name="description"
+                                name="desc"
                                 rows={10} 
                                 placeholder="Description" 
                                 required={true}
-                                value={formdata.description}
-                                onChange={(e)=>{setFormdata({...formdata,"description":e.target.value})}}
+                                value={formdata.desc}
+                                onChange={(e)=>{setFormdata({...formdata,"desc":e.target.value})}}
                             />
                         </label>
                         <button className="btn btn-primary" onClick={(e)=>{handlesubmit(e)}}>Add Listing</button>

@@ -33,7 +33,7 @@ export default function Listing(prop){
     },[state,findWish])
 
     return(
-        <div className="bg-light card m-3 border border-3" style={{"width":"50rem","height":"985px"}}>
+        <div className="bg-light card m-3 border border-3" style={{"width":"50rem","height":"1010px"}}>
             <div>
                 {prop.data.verified &&(
                     <div id='verified-badge' className="m-2 p-0 d-flex flex-row bg-light align-items-center rounded-4">
@@ -47,6 +47,7 @@ export default function Listing(prop){
                 </div>)}
                 <img style={{objectFit:"cover","width":"100%", height:"500px"}} src={prop.data.photo_main}></img>
             </div>
+            <NavLink  to={auth.user?'/property':'/login'} state={prop.data} className="text-decoration-none text-black">
             <div className="d-flex flex-row">
                 <div className="flex-grow-1 p-3">
                     <div className="d-flex flex-wrap">
@@ -95,6 +96,7 @@ export default function Listing(prop){
             <div className="d-flex justify-content-end px-3">
                 <h6 className="border-top border-bottom border-primary rounded-4 text-primary p-2">{diff===0?"Posted Today":`Posted ${diff} days ago`}</h6>
             </div>
+            </NavLink>
             <NavLink to={auth.user?'/property':'/login'} state={prop.data} className="text-decoration-none btn-block btn btn-outline-success">Contact Details</NavLink>
         </div>
     )

@@ -58,4 +58,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+#profile-hover{
+    color:white;
+    transition: color 1.5s ;
+}
+
+#profile-hover:hover{
+    color:black;
+}
 

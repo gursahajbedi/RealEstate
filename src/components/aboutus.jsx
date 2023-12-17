@@ -11,14 +11,14 @@ export default function AboutUs(){
                   <h2 className="h1 ">Our Mission</h2>
                   <img style={{height:"250px", width:"100%", objectFit:"cover"}} src="https://www.projectmanager.com/wp-content/uploads/2018/11/181112_Blog_Feature_Mission.jpg"></img>
                   <p className="mt-3">
-                  At Real-Estate, our vision is to become the go-to platform for home buyers and sellers in the (Region) area. We envision a future where every customer is satisfied with their real estate experience and has found their dream home.
+                  At Urban-Nestle, our vision is to become the go-to platform for home buyers and sellers in the (Region) area. We envision a future where every customer is satisfied with their real estate experience and has found their dream home.
                   </p>
                 </div>
                 <div className="container">
                   <h2 className="h1">Our Awards and Accolades</h2>
                   <img style={{height:"250px", width:"100%", objectFit:"cover"}} src="https://blog.vantagecircle.com/content/images/2019/12/Employee-recognition-awards.png"></img>
                   <p className="mt-3">
-                  Over the years, our company has consistently demonstrated its commitment to excellence and innovation. We have been honored with numerous awards and accolades, including the "Best Property Listing Platform" in India for 18 years. <br/>At Real-Estate , we believe in giving back to the community and making a positive impact on the lives of our customers.
+                  Over the years, our company has consistently demonstrated its commitment to excellence and innovation. We have been honored with numerous awards and accolades, including the "Best Property Listing Platform" in India for 18 years. <br/>At Urban-Nestle , we believe in giving back to the community and making a positive impact on the lives of our customers.
                   </p>
                 </div>
             </div>

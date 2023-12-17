@@ -29,64 +29,64 @@ export default function Property(){
                     {state.photo_main &&(<div className="carousel-item active">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_main}></img>
                     </div>)}
-                    {state.photo_1 &&(<div className="carousel-item active">
+                    {state.photo_1 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_1}></img>
                     </div>)}
-                    {state.photo_2 &&(<div className="carousel-item active">
+                    {state.photo_2 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_2}></img>
                     </div>)}
-                    {state.photo_3 &&(<div className="carousel-item active">
+                    {state.photo_3 &&(<div className="carousel-item ">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_3}></img>
                     </div>)}
-                    {state.photo_4 &&(<div className="carousel-item active">
+                    {state.photo_4 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_4}></img>
                     </div>)}
-                    {state.photo_5 &&(<div className="carousel-item active">
+                    {state.photo_5 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_5}></img>
                     </div>)}
-                    {state.photo_6 &&(<div className="carousel-item active">
+                    {state.photo_6 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_6}></img>
                     </div>)}
-                    {state.photo_7 &&(<div className="carousel-item active">
+                    {state.photo_7 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_7}></img>
                     </div>)}
-                    {state.photo_8 &&(<div className="carousel-item active">
+                    {state.photo_8 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_8}></img>
                     </div>)}
-                    {state.photo_9 &&(<div className="carousel-item active">
+                    {state.photo_9 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_9}></img>
                     </div>)}
-                    {state.photo_10 &&(<div className="carousel-item active">
+                    {state.photo_10 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_10}></img>
                     </div>)}
-                    {state.photo_11 &&(<div className="carousel-item active">
+                    {state.photo_11 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_11}></img>
                     </div>)}
-                    {state.photo_12 &&(<div className="carousel-item active">
+                    {state.photo_12 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_12}></img>
                     </div>)}
-                    {state.photo_13 &&(<div className="carousel-item active">
+                    {state.photo_13 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_13}></img>
                     </div>)}
-                    {state.photo_14 &&(<div className="carousel-item active">
+                    {state.photo_14 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_14}></img>
                     </div>)}
-                    {state.photo_15 &&(<div className="carousel-item active">
+                    {state.photo_15 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_15}></img>
                     </div>)}
-                    {state.photo_16 &&(<div className="carousel-item active">
+                    {state.photo_16 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_16}></img>
                     </div>)}
-                    {state.photo_17 &&(<div className="carousel-item active">
+                    {state.photo_17 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_17}></img>
                     </div>)}
-                    {state.photo_18 &&(<div className="carousel-item active">
+                    {state.photo_18 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_18}></img>
                     </div>)}
-                    {state.photo_19 &&(<div className="carousel-item active">
+                    {state.photo_19 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_19}></img>
                     </div>)}
-                    {state.photo_20 &&(<div className="carousel-item active">
+                    {state.photo_20 &&(<div className="carousel-item">
                     <img style={{'width':'100%','height':'500px','objectFit':"cover"}} src={state.photo_20}></img>
                     </div>)}
 
@@ -130,11 +130,14 @@ export default function Property(){
                     }
                 </div>
                 <div className="mt-3">
-                    <div className="mt-3">
+                    <div className="mt-3 h5">
                         {state.desc}
                     </div>
+                    <div className="mt-5">
+                        <div className="text-secondary border-bottom border-top"><b>Address:</b> {state.address} | <b>City:</b> {state.city} | <b>State:</b> {state.state} | <b>Zipcode</b> :{state.zipcode}</div>
+                    </div>
                     <div>
-                        <div className="pb-3 fw-bold h2 mt-5 border-bottom border-2 border-dark fw-normal">
+                        <div className="pb-3 fw-bold h2 mt-3 border-bottom border-2 border-dark fw-normal">
                             Features
                         </div>
                         <div className="d-flex flex-row flex-wrap justify-content-center">
@@ -146,6 +149,7 @@ export default function Property(){
                             <FeatureCard head={"Space"} value={state.sqft+" sqft"}/>
                             <FeatureCard head={"Property Age"} value={state.property_age}/>
                             <FeatureCard head={"Furniture Type"} value={state.furniture_type}/>
+                            {state.sale_type==="For Rent" && (<FeatureCard head={"Tenant Type"} value={state.tenant_type}/>)}
                         </div>
                     </div>
                     <div>

@@ -71,7 +71,7 @@ function App() {
       <Router>
         <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/"><h1 className="display-3 fw-bold ms-2 mt-2">Real-Estate</h1></Link>
+            <Link className="navbar-brand" to="/"><h1 className="display-3 fw-bold ms-2 mt-2">Urban-Nestle</h1></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -114,13 +114,13 @@ function App() {
                 <h1>Signed in As:</h1>
                 <h3>{auth.user.user}</h3>
                 <div className="h3 mt-3 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={()=>{setwishactive(true)}}>
-                  Wishlist
+                  <NavLink className='text-decoration-none' id='profile-hover' >Wishlist</NavLink>
                 </div>
                 <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover">
-                  <NavLink to={'/profile'} className='text-decoration-none text-light'>Profile</NavLink>
+                  <NavLink to={'/profile'} className='text-decoration-none' id='profile-hover' >Profile</NavLink>
                 </div>
                 <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
-                  Logout
+                  <NavLink className='text-decoration-none' id='profile-hover' >Logout</NavLink>
                 </div>
             </div>
           </div>
@@ -153,36 +153,35 @@ function App() {
       <footer className="p-5 border border-3 pt-4 my-md-5 pt-md-5 border-top container-fluid bg-light">
         <div className="row">
           <div className="col-12 col-md">
-            <h1>Real-Estate</h1>
+            <h1>Urban-Nestle</h1>
             <small className="d-block mb-3 text-muted">© 2005–2023</small>
           </div>
           <div className="col-6 col-md">
             <h5>Features</h5>
             <ul className="list-unstyled text-small">
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Random feature</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Team feature</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Another one</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Last time</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/profile">Profile</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/">Property Listing</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/">Wishlist</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/addlisting">Add Listing</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/contact">Contact</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/">Property Microsite</a></li>
             </ul>
           </div>
           <div className="col-6 col-md">
-            <h5>Resources</h5>
+            <h5>Contact</h5>
             <ul className="list-unstyled text-small">
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Resource</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Resource name</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Another resource</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Final resource</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/aboutus">Resource</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/contact">Contact Us</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/login">Login</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/register">Register</a></li>
             </ul>
           </div>
           <div className="col-6 col-md">
             <h5>About</h5>
             <ul className="list-unstyled text-small">
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Team</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Locations</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Privacy</a></li>
-              <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Terms</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/aboutus">Team</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/aboutus">Locations</a></li>
+              <li className="mb-1"><a className="link-secondary text-decoration-none" href="/aboutus">About Us</a></li>
             </ul>
           </div>
         </div>
