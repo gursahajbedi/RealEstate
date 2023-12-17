@@ -114,13 +114,13 @@ function App() {
                 <h1>Signed in As:</h1>
                 <h3>{auth.user.user}</h3>
                 <div className="h3 mt-3 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={()=>{setwishactive(true)}}>
-                  <NavLink className='text-decoration-none' id='profile-hover' >Wishlist</NavLink>
+                  <NavLink className='text-decoration-none d-flex flex-column' id='profile-hover' >Wishlist</NavLink>
                 </div>
                 <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover">
-                  <NavLink to={'/profile'} className='text-decoration-none' id='profile-hover' >Profile</NavLink>
+                  <NavLink to={'/profile'} className='text-decoration-none d-flex flex-column' id="profile-hover">Profile</NavLink>
                 </div>
                 <div className="h3 mt-2 w-100 text-center p-2 border-start border-end border-5" id="btn-hover" onClick={Submitlogout}>
-                  <NavLink className='text-decoration-none' id='profile-hover' >Logout</NavLink>
+                  <NavLink className='text-decoration-none d-flex flex-column' id='profile-hover' >Logout</NavLink>
                 </div>
             </div>
           </div>
