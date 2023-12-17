@@ -101,7 +101,11 @@ export default function Profile(){
                         />
                     </div>
                     <div>
-                        <label><h1 className='h4 fw-bold my-3 d-flex flex-row align-items-center'>Contact Email<span className='ps-3 fs-6 fw-normal'>(Contact email is different from Account email, users can contact you with the following email.<br/> Account and Contact email can be same)</span></h1></label>
+                        <label><button type='button' className='btn fs-4 p-0 fw-bold my-3 d-flex flex-row align-items-center border-0 text-decoration-none' data-bs-toggle="tooltip" data-bs-html="true" title="(Contact email is different from Account email, users can contact you with the following email. Account and Contact email can be same)">Contact Email
+                            <span className='material-icons ps-1 fs-5'>
+                                info
+                            </span>
+                        </button></label>
                         <input 
                             className='form-control'
                             type="email" 
